@@ -1,0 +1,15 @@
+---
+# Run Terraform, collect output and build inventory
+- name: Run Terraform and build inventory
+  hosts: localhost
+  roles:
+  - terraform
+
+- name: install and configure webservers
+  hosts: webservers
+  remote_user: kovin
+  become: true
+  roles:
+  - webservers
+  tags:
+  - apache
